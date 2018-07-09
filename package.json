@@ -1,7 +1,7 @@
 {
   "name": "cangoo",
   "version": "1.0.0",
-  "description": "A video game for burn calories, with the Nordic Thingy and PixiJS framework",
+  "description": "A HTML5 video game for burn calories. Build with the Nordic Thingy and PixiJS framework",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,7 @@
     "pixijs",
     "webbluetooth"
   ],
-  "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com>",
+  "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com> & Jawad Khawaja <devjawkha@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/pixi.js": "^4.8.0",
