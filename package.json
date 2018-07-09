@@ -1,0 +1,32 @@
+{
+    "name": "cangoo",
+    "version": "1.0.0",
+    "description": "A video game for burn calories, with the Nordic Thingy and PixiJS framework",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prestart": "npm run build",
+        "start": "node dist/index.js",
+        "build": "webpack",
+        "watch": "webpack -w",
+        "serve": "http-server dist -c-1"
+    },
+    "keywords": [
+        "game",
+        "webgame",
+        "pixijs",
+        "webbluetooth"
+    ],
+    "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/pixi.js": "^4.8.0",
+        "copy-webpack-plugin": "^4.5.2",
+        "http-server": "^0.11.1",
+        "webpack": "^4.11.0",
+        "webpack-cli": "^3.0.2"
+    },
+    "dependencies": {
+        "pixi.js": "^4.8.1"
+    }
+}
