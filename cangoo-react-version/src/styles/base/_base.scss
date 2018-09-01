@@ -1,0 +1,35 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: $blue;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-size: $m-size;
+}
+
+.header {
+    text-align: center;
+}
+
+.connect-players {
+    display: flex;
+    justify-content: space-around;
+}
+
+.race-track > div {
+    margin-left: 5rem;
+    padding: 5rem;
+}
+
+.race-track > div > img {
+    max-width: 10rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}

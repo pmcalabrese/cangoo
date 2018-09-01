@@ -1,0 +1,41 @@
+{
+  "name": "cangoo-react-version",
+  "version": "0.0.1",
+  "description": "First iteration of the game using React",
+  "main": "index.js",
+  "scripts": {
+    "dev-server": "webpack-dev-server"
+  },
+  "keywords": [
+    "Thingy:52",
+    "Web Bluetooth",
+    "React",
+    "Webpack"
+  ],
+  "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com> & Jawad Khawaja <devjawkha@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "normalize.css": "^8.0.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-router-dom": "^4.3.1",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1",
+    "url-loader": "^1.1.1",
+    "webpack-dev-server": "^3.1.6"
+  }
+}
