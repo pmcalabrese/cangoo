@@ -1,7 +1,7 @@
 {
   "name": "cangoo-react-version",
   "version": "0.0.1",
-  "description": "First iteration of the game using React",
+  "description": "An Opensource HTML5 video game for burn calories. Build with the Nordic Thingy and React framework",
   "main": "index.js",
   "scripts": {
     "dev-server": "webpack-dev-server --mode=development",
