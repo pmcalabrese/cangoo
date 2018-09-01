@@ -4,7 +4,11 @@
   "description": "First iteration of the game using React",
   "main": "index.js",
   "scripts": {
-    "dev-server": "webpack-dev-server"
+    "dev-server": "webpack-dev-server --mode=development",
+    "start": "node dist/index.js",
+    "build": "webpack --mode=production",
+    "watch": "webpack -w",
+    "serve": "http-server public -c-1"
   },
   "keywords": [
     "Thingy:52",
@@ -19,6 +23,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
+    "thingy52_web_bluetooth": "^1.4.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   },
@@ -27,6 +32,7 @@
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",

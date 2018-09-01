@@ -1,5 +1,7 @@
 import React from 'react'
 import KangarooIcon from './assets/kangaroo.png'
+import Thingy from "thingy52_web_bluetooth"
+import { start } from "./bt";
 
 class App extends React.Component {
     constructor() {
@@ -12,6 +14,22 @@ class App extends React.Component {
     }
 
     connectPlayer = (e) => {
+
+        const thingy = new Thingy({ logEnabled: true });
+        start(thingy);
+
+        /**
+         * NOTE:@Jawad: Should we create a player class where can keep track of its BT devices, name, state, etc etc?
+         */
+
+         /**
+          * Maybe also use Map for players in the game?
+          */
+
+        /**
+          * Also a player can exist only if a device is connected
+          */
+        
         const player = e.target.value
         this.setState({
             [player]: true
