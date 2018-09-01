@@ -27,7 +27,8 @@
     "webpack-cli": "^3.0.2"
   },
   "dependencies": {
-    "pixi.js": "^4.8.1"
+    "pixi.js": "^4.8.1",
+    "thingy52_web_bluetooth": "^1.4.1"
   },
   "repository": {
     "type": "git",
