@@ -1,4 +1,5 @@
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: './index.js',
@@ -7,6 +8,11 @@ module.exports = {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
+    plugins: [
+        new CopyWebpackPlugin([
+            { from: './src/index.html', to: '.' },
+        ], )  
+    ],
     module: {
         rules: [
             {
