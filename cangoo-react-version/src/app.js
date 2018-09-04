@@ -20,7 +20,7 @@ class App extends React.Component {
         // ask for name, maybe you can use prompt?
         // player index, name, device
         // const player = new Player(1, "Marco", thingy);
-        // start(thingy);
+        start(thingy);
 
         // player.start();
 
