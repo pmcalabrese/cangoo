@@ -16,20 +16,37 @@ class App extends React.Component {
     connectPlayer = (e) => {
 
         const thingy = new Thingy({ logEnabled: true });
-        start(thingy);
+
+        // ask for name, maybe you can use prompt?
+        // player index, name, device
+        // const player = new Player(1, "Marco", thingy);
+        // start(thingy);
+
+        // player.start();
+
+        // player.on("jump", () => {
+        //     /**
+        //      * {
+        //      *      player1: {
+        //      *          jump_count:
+        //      *          game_state: "waiting_for_device" | "waiting_for_name" | "ready" | "playing" | "gameover-lose" | "gameover-win"   
+        //      *      }
+        //      * }
+        //      */
+        // })
 
         /**
          * NOTE:@Jawad: Should we create a player class where can keep track of its BT devices, name, state, etc etc?
          */
 
-         /**
-          * Maybe also use Map for players in the game?
-          */
+        /**
+         * Maybe also use Map for players in the game?
+         */
 
         /**
           * Also a player can exist only if a device is connected
           */
-        
+
         const player = e.target.value
         this.setState({
             [player]: true
