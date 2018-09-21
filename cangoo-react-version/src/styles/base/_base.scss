@@ -4,12 +4,30 @@ html {
 
 body {
     background: $blue;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-family: cursive, Arial, Helvetica, sans-serif;
     font-size: $m-size;
 }
 
 .header {
+    font-size: $l-size;
     text-align: center;
+    color: #cfee05;
+}
+
+.start-button-container {
+    text-align: center;
+}
+
+.start-button {
+    width: 200px;
+    height: 40px;
+    background: #cfee05;
+    border: 2px solid red;
+}
+
+.timer {
+    text-align: center;
+    color: #cfee05;
 }
 
 .connect-players {
@@ -22,7 +40,18 @@ body {
     padding: 5rem;
 }
 
-.race-track > div > img {
+.player-name {
+    width: 100px;
+    background: white;
+    border: 1px solid green;
+}
+
+.player-data {
+    display: inline-block;
+    text-align: center;
+}
+
+.kangaroo {
     max-width: 10rem;
 }
 
