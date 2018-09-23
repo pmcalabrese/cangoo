@@ -1,10 +1,10 @@
-// WORKING ON MOVING THE KANGAROO ACROSS THE SCREEN IN RESPONSE TO THE JUMP
-
 import React from 'react'
 import ConnectButton from './components/ConnectButton'
 import StartButton from './components/StartButton'
 import Timer from './components/Timer'
 import Kangaroo from './components/Kangaroo'
+import GameResult from './components/GameResult'
+// import FinishLine from './assets/finish-line.png'
 // import Thingy from "thingy52_web_bluetooth"
 // import { start } from "./thingy/bt";
 
@@ -17,33 +17,48 @@ class App extends React.Component {
                 name: 'Player One',
                 connected: false,
                 jumpCount: 0,
-                x: null
+                top: 320,
+                left: 178
             },
             playerTwo: {
                 id: 'player2',
                 name: 'Player Two',
                 connected: false,
                 jumpCount: 0,
-                x: null
+                top: 498,
+                left: 178
             },
             displayStartButton: 0,
-            displayTimer: false,
-            gameStatus: 'ready'
+            timer: {
+                displayTimer: false,
+                secondsRemaining: 5
+            },
+            gameStatus: 'waiting', // || 'ready' \\ 'in-progress' \\ 'game-over'
+            gameResult: 'GAME RESULT'
         }
     }
 
     jump = (e) => {
-        if (e.keyCode === 39) {
-            this.setState({
-                playerOne: { ...this.state.playerOne, jumpCount: this.state.playerOne.jumpCount + 1 }
-            })
+        if (this.state.gameStatus === 'in-progress') {
+            if (e.keyCode === 39) {
+                this.setState({
+                    playerOne: {
+                        ...this.state.playerOne,
+                        jumpCount: this.state.playerOne.jumpCount + 1,
+                        left: this.state.playerOne.left + 5
+                    }
+                })
+            }
 
-        }
-
-        if (e.keyCode === 67) {
-            this.setState({
-                playerTwo: { ...this.state.playerTwo, jumpCount: this.state.playerTwo.jumpCount + 1 }
-            })
+            if (e.keyCode === 67) {
+                this.setState({
+                    playerTwo: {
+                        ...this.state.playerTwo,
+                        jumpCount: this.state.playerTwo.jumpCount + 1,
+                        left: this.state.playerTwo.left + 5
+                    }
+                })
+            }
         }
     }
 
@@ -57,8 +72,12 @@ class App extends React.Component {
 
     handleStartButtonClick = () => {
         this.setState({
-            displayTimer: true,
-            displayStartButton: 0
+            timer: {
+                ...this.state.timer,
+                displayTimer: true
+            },
+            displayStartButton: 0,
+            gameStatus: 'in-progress'
         })
     }
 
@@ -83,6 +102,41 @@ class App extends React.Component {
         })
     }
 
+    handleTimer = () => {
+        // we want this function to do two things: manage the countdown and change game status based on countdown status
+        this.state.timer.secondsRemaining > 0 ? this.setState({
+            timer: {
+                ...this.state.timer,
+                secondsRemaining: this.state.timer.secondsRemaining - 1
+            }
+        }) :
+            this.setState({
+                timer: {
+                    ...this.state.timer,
+                    secondsRemaining: 0,
+                },
+                gameStatus: 'game-over'
+            }, () => {
+                this.handleGameResult()
+            })
+    }
+
+    handleGameResult = () => {
+        let p1 = this.state.playerOne
+        let p2 = this.state.playerTwo
+        if (this.state.gameStatus === 'game-over') {
+            if (p1.jumpCount > p2.jumpCount) {
+                this.setState({ gameResult: `${p1.name} wins!!!` })
+            }
+            if (p1.jumpCount === p2.jumpCount) {
+                this.setState({ gameResult: `It's a Draw!!` })
+            }
+            if (p1.jumpCount < p2.jumpCount) {
+                this.setState({ gameResult: `${p2.name} wins!!!` })
+            }
+        }
+    }
+
     render() {
         return (
             <div>
@@ -93,15 +147,21 @@ class App extends React.Component {
 
                 {(this.state.displayStartButton === 2) && <StartButton handleClick={this.handleStartButtonClick} />}
 
-                {(this.state.displayTimer) && <Timer />}
-
-                <ConnectButton player={this.state.playerOne}
-                    connectPlayer={this.connectPlayer}
-                />
-                <ConnectButton player={this.state.playerTwo}
-                    connectPlayer={this.connectPlayer}
-                />
-
+                {(this.state.timer.displayTimer) && <Timer
+                    handleTimer={this.handleTimer}
+                    secondsRemaining={this.state.timer.secondsRemaining}
+                />}
+                {(this.state.gameStatus === 'game-over') && <GameResult gameResult={this.state.gameResult} />}
+                <div className='connect-players'>
+                    <ConnectButton
+                        player={this.state.playerOne}
+                        connectPlayer={this.connectPlayer}
+                    />
+                    <ConnectButton
+                        player={this.state.playerTwo}
+                        connectPlayer={this.connectPlayer}
+                    />
+                </div>
                 <div className='race-track'>
                     <Kangaroo player={this.state.playerOne}
                     />

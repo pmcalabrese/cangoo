@@ -30,13 +30,24 @@ body {
     color: #cfee05;
 }
 
+#game-result {
+    font-size: $l-size;
+    text-align: center;
+    color: #cfee05;
+}
+
 .connect-players {
     display: flex;
     justify-content: space-around;
 }
 
-.race-track > div {
+.race-track {
     margin-left: 5rem;
+    max-width: 90%;
+    border: 2px solid greenyellow;
+}
+
+.race-track > div {
     padding: 5rem;
 }
 
@@ -53,6 +64,8 @@ body {
 
 .kangaroo {
     max-width: 10rem;
+    position: absolute;
+    transition:all 300ms linear;
 }
 
 button {

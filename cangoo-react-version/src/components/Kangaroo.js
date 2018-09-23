@@ -39,7 +39,12 @@ class Kangaroo extends React.Component {
                             <p>{this.props.player.jumpCount}</p>
                             {/* </form> */}
                         </div>
-                        <img className='kangaroo' id={this.props.player.id} src={KangarooIcon} alt='kangaroo-sprite' />
+                        <img className='kangaroo'
+                            id={this.props.player.id}
+                            src={KangarooIcon}
+                            alt='kangaroo-sprite'
+                            style={{ top: `${this.props.player.top}px`, left: `${this.props.player.left}px` }}
+                        />
                     </div> :
                     <p>Waiting for {this.props.player.name}</p>
                 }
