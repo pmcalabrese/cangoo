@@ -5,8 +5,8 @@ import Timer from './components/Timer'
 import Kangaroo from './components/Kangaroo'
 import GameResult from './components/GameResult'
 // import FinishLine from './assets/finish-line.png'
-// import Thingy from "thingy52_web_bluetooth"
-// import { start } from "./thingy/bt";
+import Thingy from "thingy52_web_bluetooth"
+import { start } from "./thingy/bt";
 
 class App extends React.Component {
     constructor() {
@@ -88,17 +88,19 @@ class App extends React.Component {
     // }
 
 
-    connectPlayer = (e) => {
+    connectPlayer = async (e) => {
         const player = e.target.value
+        const thingy = new Thingy({ logEnabled: true })
+        await start(thingy)
+        console.log(thingy.name.utilities.device.device)
 
         this.setState({
             [player]: {
                 ...this.state[player],
-                connected: true
+                deviceName: thingy.name.utilities.device.device.name,
+                connected: thingy.name.utilities.device.device.gatt.connected
             },
             displayStartButton: this.state.displayStartButton + 1
-        }, () => {
-            console.log(this.state[player])
         })
     }
 
