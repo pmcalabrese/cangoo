@@ -7,6 +7,7 @@ import GameResult from './components/GameResult'
 // import FinishLine from './assets/finish-line.png'
 import Thingy from "thingy52_web_bluetooth"
 import { start } from "./thingy/bt";
+import EventEmitter from './event-emitter/EventEmitter'
 
 class App extends React.Component {
     constructor() {
@@ -38,9 +39,10 @@ class App extends React.Component {
         }
     }
 
-    jump = (e) => {
+    jump = (device_name) => {
+        console.log(device_name)
         if (this.state.gameStatus === 'in-progress') {
-            if (e.keyCode === 39) {
+            if (device_name === this.state.playerOne.deviceName) {
                 this.setState({
                     playerOne: {
                         ...this.state.playerOne,
@@ -49,8 +51,7 @@ class App extends React.Component {
                     }
                 })
             }
-
-            if (e.keyCode === 67) {
+            if (device_name === this.state.playerTwo.deviceName) {
                 this.setState({
                     playerTwo: {
                         ...this.state.playerTwo,
@@ -63,11 +64,13 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        document.addEventListener('keydown', this.jump)
+        // EventEmitter('keydown', this.jump)
+        EventEmitter.on('jump', this.jump)
     }
 
     componentWillUnmount() {
-        document.removeEventListener('keydown', this.jump)
+        // document.removeEventListener('keydown', this.jump)
+        EventEmitter.off('jump', this.jump)
     }
 
     handleStartButtonClick = () => {
@@ -92,7 +95,7 @@ class App extends React.Component {
         const player = e.target.value
         const thingy = new Thingy({ logEnabled: true })
         await start(thingy)
-        console.log(thingy.name.utilities.device.device)
+        // console.log(thingy.name.utilities.device.device)
 
         this.setState({
             [player]: {
