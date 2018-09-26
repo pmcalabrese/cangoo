@@ -1,9 +1,8 @@
 import Queue from "./queue";
 import EventEmitter from './../event-emitter/EventEmitter'
 
-const q = new Queue(10);
-
 export async function start(device) {
+    const q = new Queue(10);
     await device.connect();
     await device.gravityvector.start()
     await device.addEventListener("gravityvector", (data) => {
@@ -23,7 +22,7 @@ export async function start(device) {
         const abs_diff = Math.abs(diff)
         // console.log("diff", abs_diff);
         if (abs_diff > 4) {
-            // console.log('jump');
+            // console.log('jump', device.name.utilities.device.device.name);
             EventEmitter.emit('jump', device.name.utilities.device.device.name)
         }
         setTimeout(readKeys, 200);
