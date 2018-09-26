@@ -40,7 +40,7 @@ class App extends React.Component {
     }
 
     jump = (device_name) => {
-        console.log(device_name)
+        // console.log(device_name)
         if (this.state.gameStatus === 'in-progress') {
             if (device_name === this.state.playerOne.deviceName) {
                 this.setState({
