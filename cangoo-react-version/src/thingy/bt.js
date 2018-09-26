@@ -23,11 +23,10 @@ export async function start(device) {
         const abs_diff = Math.abs(diff)
 
         // console.log("diff", abs_diff);
-        if (abs_diff > 6) {
+        if (abs_diff > 4) {
             console.log(abs_diff)
             // console.log('jump', device.name.utilities.device.device.name);
             EventEmitter.emit('jump', device.name.utilities.device.device.name)
-            q = new Queue(10)
         }
         setTimeout(readKeys, 200);
     }

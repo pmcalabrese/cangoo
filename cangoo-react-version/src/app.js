@@ -32,7 +32,7 @@ class App extends React.Component {
             displayStartButton: 0,
             timer: {
                 displayTimer: false,
-                secondsRemaining: 5
+                secondsRemaining: 30
             },
             gameStatus: 'waiting', // || 'ready' \\ 'in-progress' \\ 'game-over'
             gameResult: 'GAME RESULT'
